@@ -7,20 +7,6 @@ function EditProfilePopup(props) {
 	const [description, setDescription] = useState("");
 	const currentUser = useContext(CurrentUserContext);
 
-	function handleChange(e) {
-		const { name, value } = e.target;
-		switch (name) {
-			case "name":
-				setName(value);
-				break;
-			case "about":
-				setDescription(value);
-				break;
-			default:
-				break;
-		}
-	}
-
 	function handleSubmit(e) {
 		e.preventDefault();
 		props.onUpdateUser({
@@ -55,7 +41,7 @@ function EditProfilePopup(props) {
 				className="form__input form__input_theme_light js-input-name"
 				name="name"
 				placeholder="Name"
-				onChange={handleChange}
+				onChange={(e) => setName(e.target.value)}
 				minLength="2"
 				maxLength="40"
 			/>
@@ -66,7 +52,7 @@ function EditProfilePopup(props) {
 				className="form__input form__input_theme_light js-input-job"
 				name="about"
 				placeholder="About me"
-				onChange={handleChange}
+				onChange={(e) => setDescription(e.target.value)}
 				minLength="2"
 				maxLength="200"
 			/>
