@@ -89,9 +89,11 @@ function App() {
 			.then((newCard) => {
 				setCards([newCard, ...cards]);
 			})
+			.then(() => {
+				closeAllPopups();
+			})
 			.catch(console.log);
 		console.log(cards);
-		closeAllPopups();
 	}
 
 	function handleCardClick(card) {
@@ -133,8 +135,10 @@ function App() {
 			.then((res) => {
 				setCurrentUser(res);
 			})
+			.then(() => {
+				closeAllPopups();
+			})
 			.catch(console.log);
-		closeAllPopups();
 	}
 
 	function handleUpdateAvatar(avatarUrl) {
@@ -143,8 +147,10 @@ function App() {
 			.then((res) => {
 				setCurrentUser(res);
 			})
+			.then(() => {
+				closeAllPopups();
+			})
 			.catch(console.log);
-		closeAllPopups();
 	}
 
 	useEffect(() => {
