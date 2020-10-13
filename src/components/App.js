@@ -37,23 +37,8 @@ function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [userEmail, setUserEmail] = useState("");
 	const [isLoading, setIsLoading] = useState(true);
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
 	const history = useHistory();
 	const location = useLocation();
-
-	const resetForm = () => {
-		setEmail("");
-		setPassword("");
-	}
-
-	function handleRegisterSuccess() {
-		setIsSuccessPopupOpen(true);
-	}
-
-	function handleRegisterFail() {
-		setIsFailPopupOpen(true);
-	}
 
 	function handleLogOut() {
 		localStorage.removeItem("jwt");
@@ -75,23 +60,34 @@ function App() {
 		}
 	}
 
-	// change Login.js so that prop.onLogin is called with { email, password }
 	function handleLogin(credentials) {
-			authApi
-				.authorize(credentials)
-				.then((data) => {
-					localStorage.setItem("jwt", data.token);
-				})
-				.then(() => {
-					setUserEmail(credentials.email);
-					setLoggedIn(true)})
-				.then(resetForm())
-				.then(() => history.push("/"))
-				.catch((err) => {
-					console.log(err);
-				});
+		authApi
+			.authorize(credentials)
+			.then((data) => {
+				localStorage.setItem("jwt", data.token);
+			})
+			.then(() => {
+				setUserEmail(credentials.email);
+				setLoggedIn(true);
+			})
+			.then(() => history.push("/"))
+			.catch((err) => {
+				console.log(err);
+			});
 	}
 
+	function handleRegister(credentials) {
+		authApi
+			.register(credentials)
+			.then(() => {
+				history.push("/signin");
+				setIsSuccessPopupOpen(true);
+			})
+			.catch((err) => {
+				console.log(err);
+				setIsFailPopupOpen(true);
+			});
+	}
 	function setCardsOnLike(cardId, newCard) {
 		const newCards = cards.map((c) => (c._id === cardId ? newCard : c));
 		setCards(newCards);
@@ -192,12 +188,6 @@ function App() {
 		}
 	}, []);
 
-	// useEffect(() => {
-	// 	if (localStorage.getItem("jwt")) {
-	// 		history.push("/");
-	// 	}
-	// }, [history]);
-
 	useEffect(() => {
 		api
 			.getUserInfo()
@@ -222,9 +212,7 @@ function App() {
 		return () => {
 			document.removeEventListener("keydown", handleEscKey);
 		};
-	},[]);
-
-	
+	}, []);
 
 	if (isLoading) {
 		return null;
@@ -243,11 +231,7 @@ function App() {
 						<Login onLogin={handleLogin} title="Log in" />
 					</Route>
 					<Route path="/signup">
-						<Register
-							title="Sign up"
-							onSuccess={handleRegisterSuccess}
-							onFail={handleRegisterFail}
-						/>
+						<Register title="Sign up" onRegister={handleRegister} />
 					</Route>
 					<ProtectedRoute
 						exact

@@ -1,36 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Form from "./Form";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../blocks/authentication/authentication.css";
-import authApi from "../utils/authApi";
 
 function Register(props) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const history = useHistory();
+
 	const resetForm = () => {
 		setEmail("");
 		setPassword("");
-	};
+	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		authApi
-			.register({ email, password })
-			.then(resetForm)
-			.then(() => {
-				history.push("/signin");
-				props.onSuccess();
-			})
-			.catch((err) => {
-				console.log(err);
-				props.onFail();
-			});
+		props.onRegister({ email, password });
+		resetForm();
 	};
-	useEffect(() => {
-		if (localStorage.getItem("jwt")) {
-			history.push("/");
-		}
-	}, [history]);
 
 	return (
 		<section className="authentication page__section">

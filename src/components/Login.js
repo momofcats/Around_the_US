@@ -7,12 +7,18 @@ function Login(props) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	
+	const resetForm = () => {
+		setEmail("");
+		setPassword("");
+	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (!email || !password) {
 			return;
 		}
 		props.onLogin({email, password});
+		resetForm();
 	}
 	
 	return (
