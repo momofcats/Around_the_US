@@ -4,7 +4,8 @@ import {
 	Switch,
 	withRouter,
 	useHistory,
-	useLocation, Redirect
+	useLocation,
+	Redirect,
 } from "react-router-dom";
 import Header from "./Header";
 import Main from "./Main";
@@ -172,26 +173,22 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		if (loggedIn) {
-			api
-				.getUserInfo()
-				.then((data) => {
-					setCurrentUser(data);
-				})
-				.catch(console.log);
-		}
-	}, [loggedIn]);
+		api
+			.getUserInfo()
+			.then((data) => {
+				setCurrentUser(data);
+			})
+			.catch(console.log);
+	}, []);
 
 	useEffect(() => {
-		if (loggedIn) {
-			api
-				.getInitialCards()
-				.then((cards) => {
-					setCards(cards);
-				})
-				.catch(console.log);
-		}
-	}, [loggedIn]);
+		api
+			.getInitialCards()
+			.then((cards) => {
+				setCards(cards);
+			})
+			.catch(console.log);
+	}, []);
 
 	useEffect(() => {
 		document.addEventListener("keydown", handleEscKey);
@@ -223,7 +220,7 @@ function App() {
 							onSuccess={handleRegisterSuccess}
 							onFail={handleRegisterFail}
 						/>
-					</Route>	
+					</Route>
 					<ProtectedRoute
 						exact
 						path="/"
@@ -238,7 +235,7 @@ function App() {
 						onCardLike={handleCardLike}
 					/>
 					<Route>
-						{loggedIn? <Redirect to="/" /> : <Redirect to="/signin" />} 
+						{loggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
 					</Route>
 				</Switch>
 				{loggedIn && <Footer />}
