@@ -155,7 +155,7 @@ function App() {
 
 	useEffect(() => {
 		if (!loggedIn) {
-			let jwt = localStorage.getItem("jwt");
+			const jwt = localStorage.getItem("jwt");
 			if (jwt) {
 				authApi.getContent(jwt).then((res) => {
 					if (res) {
