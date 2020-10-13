@@ -169,7 +169,7 @@ function App() {
 				setIsLoading(false);
 			}
 		}
-	}, [history, loggedIn]);
+	}, []);
 
 	useEffect(() => {
 		if (loggedIn) {
