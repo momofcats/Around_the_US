@@ -4,7 +4,7 @@ import {
 	Switch,
 	withRouter,
 	useHistory,
-	useLocation,
+	useLocation, Redirect
 } from "react-router-dom";
 import Header from "./Header";
 import Main from "./Main";
@@ -217,7 +217,7 @@ function App() {
 							onSuccess={handleRegisterSuccess}
 							onFail={handleRegisterFail}
 						/>
-					</Route>
+					</Route>	
 					<ProtectedRoute
 						exact
 						path="/"
@@ -231,6 +231,9 @@ function App() {
 						onCardDelete={handleCardDelete}
 						onCardLike={handleCardLike}
 					/>
+					<Route>
+						{loggedIn? <Redirect to="/" /> : <Redirect to="/signin" />} 
+					</Route>
 				</Switch>
 				{loggedIn && <Footer />}
 
