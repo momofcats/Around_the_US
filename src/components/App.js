@@ -30,7 +30,7 @@ function App() {
 	const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
 	const [isFailPopupOpen, setIsFailPopupOpen] = useState(false);
 	const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
-	const [selectedCard, setSelectedCard] = useState(0);
+	const [selectedCard, setSelectedCard] = useState({});
 	const [currentUser, setCurrentUser] = useState({});
 	const [cards, setCards] = useState([]);
 	const [loggedIn, setLoggedIn] = useState(false);
@@ -118,7 +118,7 @@ function App() {
 		setIsImagePopupOpen(false);
 		setIsFailPopupOpen(false);
 		setIsSuccessPopupOpen(false);
-		setSelectedCard(0);
+		setSelectedCard({});
 	}
 
 	function handleEscKey(evt) {
