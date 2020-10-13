@@ -196,7 +196,7 @@ function App() {
 		return () => {
 			document.removeEventListener("keydown", handleEscKey);
 		};
-	});
+	},[]);
 
 	if (isLoading) {
 		return null;
