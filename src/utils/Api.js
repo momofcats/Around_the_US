@@ -17,7 +17,7 @@ class Api {
   }
 
   addLike(cardId) {
-    return this.request(`/cards/likes/${cardId}`, "PUT");
+    return this.nrequest(`/cards/likes/${cardId}`, "PUT");
   }
 
   removeLike(cardId) {

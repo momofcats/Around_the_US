@@ -12,7 +12,7 @@ class AuthApi {
 	}
 
 	getContent(token) {
-		return fetch('https://register.nomoreparties.co/users/me', {
+		return fetch('https://ykhilko.students.nomoreparties.site/users/me', {
 			method: 'GET',
 			headers: {
 				"Content-Type": "application/json",
@@ -44,7 +44,7 @@ class AuthApi {
 	}
 }
 const authApi = new AuthApi({
-	baseUrl: "https://register.nomoreparties.co",
+	baseUrl: "https://ykhilko.students.nomoreparties.site",
 });
 
 export default authApi;
