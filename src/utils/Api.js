@@ -21,7 +21,7 @@ class Api {
   }
 
   addLike(cardId) {
-    return this.nrequest(`/cards/likes/${cardId}`, "PUT");
+    return this.request(`/cards/likes/${cardId}`, "PUT");
   }
 
   removeLike(cardId) {
@@ -80,7 +80,7 @@ class Api {
   }
 }
 const api = new Api({
-  baseUrl: "http://localhost:3000"
+  baseUrl: "http://ykhilko.students.nomoreparties.site"
 });
 
 export default api;

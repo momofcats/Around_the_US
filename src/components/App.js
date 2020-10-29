@@ -197,7 +197,7 @@ function App() {
 				setCurrentUser(data);
 			})
 			.catch(console.log);
-	}, []);
+	}, [loggedIn]);
 
 	useEffect(() => {
 		api
@@ -206,7 +206,7 @@ function App() {
 				setCards(cards);
 			})
 			.catch(console.log);
-	}, []);
+	}, [loggedIn]);
 
 	useEffect(() => {
 		document.addEventListener("keydown", handleEscKey);

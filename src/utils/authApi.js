@@ -44,7 +44,7 @@ class AuthApi {
 	}
 }
 const authApi = new AuthApi({
-	baseUrl: "http://localhost:3000",
+	baseUrl: "http://ykhilko.students.nomoreparties.site",
 });
 
 export default authApi;
