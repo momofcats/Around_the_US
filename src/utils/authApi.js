@@ -12,7 +12,7 @@ class AuthApi {
 	}
 
 	getContent(token) {
-		return fetch('http://localhost:3000/users/me', {
+		return fetch('http://ykhilko.students.nomoreparties.site/users/me', {
 			method: 'GET',
 			headers: {
 				"Content-Type": "application/json",
