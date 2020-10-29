@@ -4,6 +4,10 @@ class Api {
     this.options = options;
   }
 
+  setToken(token) {
+    this.token = token;
+  }
+
   getInitialCards() {
     return this.request("/cards");
   }
@@ -61,7 +65,7 @@ class Api {
   request(api, method, body) {
     return fetch(`${this.options.baseUrl}${api}`, {
       headers: {
-        "Authorization" : '2ea24103-3839-4671-8e47-57675e6fba9c',
+        "Authorization" : `Bearer ${this.token}`,
         "Content-Type": "application/json",
       },
       method,
@@ -76,7 +80,7 @@ class Api {
   }
 }
 const api = new Api({
-  baseUrl: "https://around.nomoreparties.co/v1/group-2",
+  baseUrl: "http://localhost:3000"
 });
 
 export default api;

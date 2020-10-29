@@ -65,6 +65,7 @@ function App() {
 			.authorize(credentials)
 			.then((data) => {
 				localStorage.setItem("jwt", data.token);
+				api.setToken(data.token);
 			})
 			.then(() => {
 				setUserEmail(credentials.email);
@@ -174,11 +175,12 @@ function App() {
 		if (!loggedIn) {
 			const jwt = localStorage.getItem("jwt");
 			if (jwt) {
+				api.setToken(jwt);
 				authApi.getContent(jwt).then((res) => {
 					if (res) {
 						setIsLoading(false);
 						setLoggedIn(true);
-						setUserEmail(res.data.email);
+						setUserEmail(res.email);
 						history.push("/");
 					}
 				});
