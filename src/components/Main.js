@@ -14,7 +14,7 @@ function Main(props) {
 						<img
 							alt="profile"
 							className="media__image"
-							src={currentUser.avatar}
+							src={ currentUser.avatar === undefined ? "https://eitrawmaterials.eu/wp-content/uploads/2016/09/empty-avatar.jpg" : currentUser.avatar }
 						/>
 						<button
 							onClick={props.onEditAvatar}
@@ -24,14 +24,14 @@ function Main(props) {
 					</div>
 					<div className="media__body">
 						<div className="media__item">
-							<h1 className="media__name">{currentUser.name}</h1>
+							<h1 className="media__name">{currentUser.name === undefined ? "Hello stranger !" : currentUser.name }</h1>
 							<button
 								onClick={props.onEditProfile}
 								className="media__btn media__btn_size_sm button"
 								type="button"
 							></button>
 						</div>
-						<p className="media__job">{currentUser.about}</p>
+						<p className="media__job">{currentUser.about === undefined ? "Don't be shy, tell something about yourself!" : currentUser.about}</p>
 					</div>
 				</div>
 				<button

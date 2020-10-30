@@ -191,21 +191,26 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		api
+		if(loggedIn){
+			api
 			.getUserInfo()
 			.then((data) => {
 				setCurrentUser(data);
 			})
 			.catch(console.log);
+		}
+		
 	}, [loggedIn]);
 
 	useEffect(() => {
-		api
+		if(loggedIn) {
+			api
 			.getInitialCards()
 			.then((cards) => {
 				setCards(cards);
 			})
 			.catch(console.log);
+		}
 	}, [loggedIn]);
 
 	useEffect(() => {

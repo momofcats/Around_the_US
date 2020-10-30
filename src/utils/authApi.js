@@ -12,7 +12,7 @@ class AuthApi {
 	}
 
 	getContent(token) {
-		return fetch('http://api.ykhilko.students.nomoreparties.site/users/me', {
+		return fetch('http://localhost:3000/users/me', {
 			method: 'GET',
 			headers: {
 				"Content-Type": "application/json",
@@ -44,7 +44,7 @@ class AuthApi {
 	}
 }
 const authApi = new AuthApi({
-	baseUrl: "http://api.ykhilko.students.nomoreparties.site",
+	baseUrl: "http://localhost:3000",
 });
 
 export default authApi;
