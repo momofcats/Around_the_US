@@ -80,7 +80,7 @@ class Api {
   }
 }
 const api = new Api({
-  baseUrl: "http://ykhilko.students.nomoreparties.site"
+  baseUrl: "http://api.ykhilko.students.nomoreparties.site"
 });
 
 export default api;
