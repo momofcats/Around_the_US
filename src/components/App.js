@@ -74,6 +74,7 @@ function App() {
 			.then(() => history.push("/"))
 			.catch((err) => {
 				console.log(err);
+				setIsFailPopupOpen(true);
 			});
 	}
 
