@@ -39,6 +39,7 @@ function App() {
 	const [isLoading, setIsLoading] = useState(true);
 	const history = useHistory();
 	const location = useLocation();
+	const [errMessage, setErrMessage] = useState('');
 
 	function handleLogOut() {
 		localStorage.removeItem("jwt");
@@ -47,7 +48,7 @@ function App() {
 	}
 
 	function handleCardLike(card) {
-		const isLiked = card.likes.some((i) => i._id === currentUser._id);
+		const isLiked = card.likes.some((i) => i === currentUser._id);
 
 		if (isLiked) {
 			api.removeLike(card._id).then((newCard) => {
@@ -73,7 +74,8 @@ function App() {
 			})
 			.then(() => history.push("/"))
 			.catch((err) => {
-				console.log(err);
+				setErrMessage(err);
+				//console.log(err);
 				setIsFailPopupOpen(true);
 			});
 	}
@@ -290,7 +292,7 @@ function App() {
 					isOpen={isFailPopupOpen}
 					onClose={closeAllPopups}
 					icon={failure}
-					text="Oops, something went wrong! Please try again."
+					text={errMessage}
 				/>
 			</CurrentUserContext.Provider>
 		</>
