@@ -12,7 +12,7 @@ class AuthApi {
 	}
 
 	getContent(token) {
-		return fetch('http://localhost:3000/users/me', {
+		return fetch('https://react-around-api.herokuapp.com/users/me', {
 			method: 'GET',
 			headers: {
 				"Content-Type": "application/json",
@@ -44,7 +44,7 @@ class AuthApi {
 	}
 }
 const authApi = new AuthApi({
-	baseUrl: "http://localhost:3000",
+	baseUrl: "https://react-around-api.herokuapp.com",
 });
 
 export default authApi;

@@ -80,7 +80,7 @@ class Api {
   }
 }
 const api = new Api({
-  baseUrl: "http://localhost:3000"
+  baseUrl: "https://react-around-api.herokuapp.com"
 });
 
 export default api;

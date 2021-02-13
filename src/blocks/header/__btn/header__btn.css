@@ -4,4 +4,13 @@
 	border-style: none;
 	padding-left: 15px;
 	font-weight: normal;
+	padding-top: 20px;
+	font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+
+@media screen and (max-width: 480px) {
+	.header__btn {
+		font-size: 18px;
+	}
 }
