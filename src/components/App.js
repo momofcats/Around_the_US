@@ -75,7 +75,6 @@ function App() {
 			.then(() => history.push("/"))
 			.catch((err) => {
 				setErrMessage(err);
-				//console.log(err);
 				setIsFailPopupOpen(true);
 			});
 	}
@@ -88,7 +87,6 @@ function App() {
 				setIsSuccessPopupOpen(true);
 			})
 			.catch((err) => {
-				console.log(err);
 				setIsFailPopupOpen(true);
 			});
 	}
@@ -114,7 +112,6 @@ function App() {
 				closeAllPopups();
 			})
 			.catch(console.log);
-		console.log(cards);
 	}
 
 	function handleCardClick(card) {
