@@ -2,7 +2,7 @@
 
 ## Links
 
-[Link to Github pages](https://momofcats.github.io/around-react)
+[Link to Github pages](https://momofcats.github.io/around-react).
 [Server side code](https://github.com/momofcats/react-around-api-full).
 
 ## Description and Functionality
