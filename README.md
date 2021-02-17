@@ -3,7 +3,7 @@
 ## Links
 
 * [Link to Netlify](https://nostalgic-volhard-529f35.netlify.app/)
-* [Server side code](https://github.com/momofcats/react-around-api-full).
+* [Server side code](https://github.com/momofcats/react-around-api-full)
 
 ## Description and Functionality
 
