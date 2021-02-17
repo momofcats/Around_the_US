@@ -8,6 +8,7 @@ class Api {
     this.token = token;
   }
 
+  
   getInitialCards() {
     return this.request("/cards");
   }
@@ -71,12 +72,13 @@ class Api {
       method,
       body,
     })
-      .then((res) => {
+      .then(async (res) => {
         if (res.ok) {
           return res.json();
         }
-        return Promise.reject(`Error: ${res.status}`);
-      })
+        const body = await res.json();
+        return Promise.reject(body);
+      });
   }
 }
 const api = new Api({

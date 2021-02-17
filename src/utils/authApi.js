@@ -11,21 +11,6 @@ class AuthApi {
 		return this.request("/signin", "POST", JSON.stringify(credentials))
 	}
 
-	getContent(token) {
-		return fetch('https://react-around-api.herokuapp.com/users/me', {
-			method: 'GET',
-			headers: {
-				"Content-Type": "application/json",
-				'Authorization': `Bearer ${token}`,
-			},
-		}).then(async (res) => {
-			if (res.ok) {
-				return res.json();
-			}
-			const body = await res.json();
-			return Promise.reject(body.error || body.message);
-		});
-	}
 	
 	request(authApi, method, body) {
 		return fetch(`${this.options.baseUrl}${authApi}`, {
@@ -39,7 +24,7 @@ class AuthApi {
 				return res.json();
 			}
 			const body = await res.json();
-			return Promise.reject(body.message);
+			return Promise.reject(body);
 		});
 	}
 }
