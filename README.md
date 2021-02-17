@@ -1,4 +1,4 @@
-# Around The U.S. Photo Sahring APP
+# Around The U.S. Photo Sharing APP
 
 ## Links
 
